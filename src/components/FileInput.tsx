@@ -1,18 +1,24 @@
 import ProcessContents from "../processData";
+import { Song } from "../types";
 
-function FileInput() {
+interface Props {
+   addSongs: (curSongs: Song[]) => void;
+}
+
+function FileInput({ addSongs }: Props) {
    const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
       let files: FileList | null = e.currentTarget.files;
       if (files) {
          // Check if files is not null
-         Array.from(files).forEach((file) => {
+         Array.from(files).forEach(async (file) => {
             if (file) {
                if (file.type !== "application/json") {
                   console.error(
                      "Expected a json file but got a " + file.type + " file"
                   );
                } else {
-                  ProcessContents(file);
+                  const curSongs = await ProcessContents(file);
+                  addSongs(curSongs);
                }
             } else {
                console.error("File could not be uploaded. Please try again.");
