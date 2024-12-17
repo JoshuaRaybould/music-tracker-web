@@ -1,10 +1,10 @@
-type Song = {
+/*type Song = {
    uri: string,
    name: string,
    artist: string,
    album: string,
    timeListened: number
-}
+}*/
 
 function ProcessContents(file : File) {
    const fileReader = new FileReader();
