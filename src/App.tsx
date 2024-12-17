@@ -1,11 +1,11 @@
-import ListGroup from "./components/ListGroup";
+import FileInput from "./components/FileInput";
 
 function App() {
-  return (
-    <div>
-      <ListGroup />
-    </div>
-  );
+   return (
+      <div>
+         <FileInput />
+      </div>
+   );
 }
 
 export default App;
