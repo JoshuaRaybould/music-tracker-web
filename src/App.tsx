@@ -15,6 +15,7 @@ function App() {
    return (
       <div>
          <FileInput addSongs={addSongs} />
+         <ListGroup items={songs}></ListGroup>
       </div>
    );
 }
