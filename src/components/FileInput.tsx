@@ -11,8 +11,9 @@ function FileInput() {
                   console.error(
                      "Expected a json file but got a " + file.type + " file"
                   );
+               } else {
+                  ProcessContents(file);
                }
-               ProcessContents(file);
             } else {
                console.error("File could not be uploaded. Please try again.");
             }
