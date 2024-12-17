@@ -21,6 +21,7 @@ function FileInput() {
             type="file"
             id="formFileMultiple"
             multiple
+            accept=".json"
             onChange={onChange}
          />
       </div>
