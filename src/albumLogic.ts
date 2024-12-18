@@ -12,9 +12,9 @@ function songsToAlbums(songs : Song[]): Album[] {
             album.timeListened = album.timeListened +song.timeListened;
             break;
          }
-         if (!albumFound) {
-            albums.push(songToAlbum(song));
-         }
+      }
+      if (!albumFound) {
+         albums.push(songToAlbum(song));
       }
    }
 
@@ -23,7 +23,7 @@ function songsToAlbums(songs : Song[]): Album[] {
 
 function songToAlbum(song : Song) : Album {
    return {
-      name: song.name,
+      name: song.album,
       artist: song.artist,
       timeListened: song.timeListened
    }
