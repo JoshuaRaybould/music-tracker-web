@@ -47,7 +47,7 @@ function CleanSongs(songs : Song[]) : Song[] {
       }
       var songFound = false;
       for (const cleanedSong of cleanSongs) {
-         if (cleanedSong.uri === song.uri) {
+         if (cleanedSong.name === song.name && cleanedSong.artist === song.artist) {
             songFound = true;
             cleanedSong.timeListened = cleanedSong.timeListened +song.timeListened;
             break;
