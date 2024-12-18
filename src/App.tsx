@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FileInput from "./components/FileInput";
 import { Song } from "./types";
-import ListGroup from "./components/ListGroup";
+import BorderedTable from "./components/BorderedTable";
 
 function App() {
    const [songs, setSongs] = useState<Song[]>([]);
@@ -15,7 +15,7 @@ function App() {
    return (
       <div>
          <FileInput addSongs={addSongs} />
-         <ListGroup items={songs}></ListGroup>
+         <BorderedTable items={songs}></BorderedTable>
       </div>
    );
 }
