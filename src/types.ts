@@ -7,3 +7,11 @@ type Song = {
 }
 
 export type { Song }
+
+type Album = {
+   name: string,
+   artist: string,
+   timeListened: number
+}
+
+export type { Album }
