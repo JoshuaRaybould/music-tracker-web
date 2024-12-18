@@ -20,12 +20,23 @@ function ListGroup({ items }: Props) {
                   key={item.uri}
                   onClick={handleClick}
                >
-                  {item.name}
+                  {item.name + " " + formatTimeListened(item.timeListened)}
                </li>
             ))}
          </ul>
       </>
    );
+}
+
+function formatTimeListened(timeListened: number): string {
+   let seconds: number = Math.floor(timeListened % 60);
+   let minutes: number = Math.floor((timeListened / 60) % 60);
+   let hours: number = Math.floor((timeListened / 3600) % 60);
+
+   if (hours === 0) {
+      return minutes + " minutes and " + seconds + " seconds";
+   }
+   return hours + " hours and " + minutes + " minutes";
 }
 
 export default ListGroup;
