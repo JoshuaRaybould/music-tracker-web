@@ -20,7 +20,7 @@ function BorderedTable({ items, firstCol, secondCol, thirdCol }: Props) {
                <tr>
                   <th scope="col">{firstCol}</th>
                   <th scope="col">{secondCol}</th>
-                  {thirdCol && <th scope="col">{thirdCol}</th>}
+                  <th scope="col">{thirdCol}</th>
                </tr>
             </thead>
             <tbody>
