@@ -15,3 +15,10 @@ type Album = {
 }
 
 export type { Album }
+
+type Artist = {
+   name: string,
+   timeListened: number
+}
+
+export type { Artist }
