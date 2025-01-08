@@ -2,11 +2,13 @@ import { Album, Song } from "../types";
 import "../App.css";
 
 interface Props {
-   firstColTitle: string;
+   firstCol: String;
+   secondCol: String;
+   thirdCol: String;
    items: Song[] | Album[];
 }
 
-function BorderedTable({ items, firstColTitle }: Props) {
+function BorderedTable({ items, firstCol, secondCol, thirdCol }: Props) {
    /* handles click event
    const handleClick = (event: React.MouseEvent<HTMLElement>) =>
       console.log(event.clientX);*/
@@ -16,9 +18,9 @@ function BorderedTable({ items, firstColTitle }: Props) {
          <table className="table table-bordered">
             <thead>
                <tr>
-                  <th scope="col">{firstColTitle}</th>
-                  <th scope="col">Artist</th>
-                  <th scope="col">Time listened</th>
+                  <th scope="col">{firstCol}</th>
+                  <th scope="col">{secondCol}</th>
+                  {thirdCol && <th scope="col">{thirdCol}</th>}
                </tr>
             </thead>
             <tbody>
