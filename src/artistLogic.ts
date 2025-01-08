@@ -18,6 +18,8 @@ function songsToArtists(songs : Song[]): Artist[] {
       }
    }
 
+   artists.sort((a, b) => (a.timeListened < b.timeListened ? 1 : -1));
+
    return artists;
 }
 
