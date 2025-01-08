@@ -4,6 +4,7 @@ import { Song } from "./types";
 import BorderedTable from "./components/BorderedTable";
 import ArtistBorderedTable from "./components/ArtistBorderedTable";
 import songsToAlbums from "./albumLogic";
+import songsToArtists from "./artistLogic";
 
 function App() {
    const [songs, setSongs] = useState<Song[]>([]);
@@ -15,7 +16,7 @@ function App() {
    }
 
    const albums = songsToAlbums(songs);
-   const artists = songsToAlbums(songs);
+   const artists = songsToArtists(songs);
 
    return (
       <div>
