@@ -5,13 +5,14 @@ import BorderedTable from "./components/BorderedTable";
 import ArtistBorderedTable from "./components/ArtistBorderedTable";
 import songsToAlbums from "./albumLogic";
 import songsToArtists from "./artistLogic";
+import CleanSongs from "./SongLogic";
 
 function App() {
    const [songs, setSongs] = useState<Song[]>([]);
 
    function addSongs(curSongs: Song[]) {
       setSongs((currentSongs) => {
-         return [...currentSongs, ...curSongs];
+         return CleanSongs([...currentSongs, ...curSongs]);
       });
    }
 
