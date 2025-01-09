@@ -1,6 +1,7 @@
 import { Album, Song } from "../types";
 import { useState } from "react";
 import "../App.css";
+import { useDebounce } from "use-debounce";
 
 interface Props {
    firstCol: String;
@@ -15,6 +16,7 @@ function BorderedTable({ items, firstCol, secondCol, fifthColVisible }: Props) {
       console.log(event.clientX);*/
 
    const [search, setSearch] = useState("");
+   const debouncedInputValue = useDebounce(search, 400); // Debounce with 400ms delay
 
    return (
       <>
@@ -43,11 +45,11 @@ function BorderedTable({ items, firstCol, secondCol, fifthColVisible }: Props) {
                <tbody>
                   {items
                      .filter((item) => {
-                        return search === ""
+                        return debouncedInputValue[0] === ""
                            ? item
                            : item.name
                                 .toLowerCase()
-                                .includes(search.toLowerCase());
+                                .includes(debouncedInputValue[0].toLowerCase());
                      })
                      .map((item) => (
                         <tr key={item.name + " " + item.artist}>
