@@ -5,11 +5,11 @@ import "../App.css";
 interface Props {
    firstCol: String;
    secondCol: String;
-   thirdCol: String;
    items: Song[] | Album[];
+   fifthColVisible: Boolean;
 }
 
-function BorderedTable({ items, firstCol, secondCol, thirdCol }: Props) {
+function BorderedTable({ items, firstCol, secondCol, fifthColVisible }: Props) {
    /* handles click event
    const handleClick = (event: React.MouseEvent<HTMLElement>) =>
       console.log(event.clientX);*/
@@ -34,7 +34,10 @@ function BorderedTable({ items, firstCol, secondCol, thirdCol }: Props) {
                   <tr>
                      <th scope="col">{firstCol}</th>
                      <th scope="col">{secondCol}</th>
-                     <th scope="col">{thirdCol}</th>
+                     <th scope="col">Time Listened</th>
+                     <th scope="col">Plays</th>
+                     {fifthColVisible && <th scope="col">Longest Streak</th>}
+                     <th scope="col">First Listen</th>
                   </tr>
                </thead>
                <tbody>
@@ -51,6 +54,9 @@ function BorderedTable({ items, firstCol, secondCol, thirdCol }: Props) {
                            <td>{item.name}</td>
                            <td>{item.artist}</td>
                            <td>{formatTimeListened(item.timeListened)}</td>
+                           <td>{item.plays}</td>
+                           {fifthColVisible && <td>{item.streak}</td>}
+                           <td>{formatTimeStamp(item.firstListened)}</td>
                         </tr>
                      ))}
                </tbody>
@@ -69,6 +75,17 @@ function formatTimeListened(timeListened: number): string {
       return minutes + " minutes and " + seconds + " seconds";
    }
    return hours + " hours and " + minutes + " minutes";
+}
+
+function formatTimeStamp(firstListened: EpochTimeStamp): string {
+   return new Intl.DateTimeFormat("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+   }).format(new Date(firstListened));
 }
 
 export default BorderedTable;

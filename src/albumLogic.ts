@@ -9,7 +9,9 @@ function songsToAlbums(songs : Song[]): Album[] {
       for (const album of albums) {
          if (song.album === album.name && song.artist === album.artist) {
             albumFound = true;
-            album.timeListened = album.timeListened +song.timeListened;
+            album.timeListened += song.timeListened;
+            album.plays +=  song.plays;
+            album.firstListened = (album.firstListened < song.firstListened) ? album.firstListened : song.firstListened;
             break;
          }
       }
@@ -27,7 +29,10 @@ function songToAlbum(song : Song) : Album {
    return {
       name: song.album,
       artist: song.artist,
-      timeListened: song.timeListened
+      timeListened: song.timeListened,
+      streak: 1,
+      plays: song.plays,
+      firstListened: song.firstListened
    }
 }
 

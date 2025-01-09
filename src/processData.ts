@@ -36,7 +36,10 @@ function DataToSong(data : any) {
       name: data.master_metadata_track_name,
       artist: data.master_metadata_album_artist_name,
       album: data.master_metadata_album_album_name,
-      timeListened: (+data.ms_played)/1000
+      timeListened: (+data.ms_played)/1000,
+      plays: 1,
+      streak: 1,
+      firstListened: data.ts
    }
 }
 

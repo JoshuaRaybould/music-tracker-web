@@ -9,7 +9,9 @@ function songsToArtists(songs : Song[]): Artist[] {
       for (const artist of artists) {
          if (song.artist === artist.name) {
             artistFound = true;
-            artist.timeListened = artist.timeListened +song.timeListened;
+            artist.timeListened += song.timeListened;
+            artist.plays += song.plays;
+            artist.firstListened = (artist.firstListened < song.firstListened) ? artist.firstListened : song.firstListened;
             break;
          }
       }
@@ -26,7 +28,10 @@ function songsToArtists(songs : Song[]): Artist[] {
 function songToArtist(song : Song) : Artist {
    return {
       name: song.artist,
-      timeListened: song.timeListened
+      timeListened: song.timeListened,
+      plays: song.plays,
+      streak: 1,
+      firstListened: song.firstListened
    }
 }
 
