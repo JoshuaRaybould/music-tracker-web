@@ -26,19 +26,15 @@ function App() {
             items={songs}
             firstCol={"Song"}
             secondCol={"Artist"}
-            thirdCol={"Time Listened"}
+            fifthColVisible={true}
          ></BorderedTable>
          <BorderedTable
             items={albums}
             firstCol={"Album"}
             secondCol={"Artist"}
-            thirdCol={"Time Listened"}
+            fifthColVisible={false}
          ></BorderedTable>
-         <ArtistBorderedTable
-            items={artists}
-            firstCol={"Artist"}
-            secondCol={"Time Listened"}
-         ></ArtistBorderedTable>
+         <ArtistBorderedTable items={artists}></ArtistBorderedTable>
       </div>
    );
 }

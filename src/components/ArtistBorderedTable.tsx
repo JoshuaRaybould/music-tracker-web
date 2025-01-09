@@ -3,12 +3,10 @@ import { Artist } from "../types";
 import "../App.css";
 
 interface Props {
-   firstCol: String;
-   secondCol: String;
    items: Artist[];
 }
 
-function ArtistBorderedTable({ items, firstCol, secondCol }: Props) {
+function ArtistBorderedTable({ items }: Props) {
    /* handles click event
    const handleClick = (event: React.MouseEvent<HTMLElement>) =>
       console.log(event.clientX);*/
@@ -30,8 +28,10 @@ function ArtistBorderedTable({ items, firstCol, secondCol }: Props) {
             <table className="table table-bordered">
                <thead>
                   <tr>
-                     <th scope="col">{firstCol}</th>
-                     <th scope="col">{secondCol}</th>
+                     <th scope="col">Artist</th>
+                     <th scope="col">Time Listened</th>
+                     <th scope="col">Plays</th>
+                     <th scope="col">First Listen</th>
                   </tr>
                </thead>
                <tbody>
@@ -47,6 +47,8 @@ function ArtistBorderedTable({ items, firstCol, secondCol }: Props) {
                         <tr key={item.name + " " + item.timeListened}>
                            <td>{item.name}</td>
                            <td>{formatTimeListened(item.timeListened)}</td>
+                           <td>{item.plays}</td>
+                           <td>{formatTimeStamp(item.firstListened)}</td>
                         </tr>
                      ))}
                </tbody>
@@ -65,6 +67,17 @@ function formatTimeListened(timeListened: number): string {
       return minutes + " minutes and " + seconds + " seconds";
    }
    return hours + " hours and " + minutes + " minutes";
+}
+
+function formatTimeStamp(firstListened: EpochTimeStamp): string {
+   return new Intl.DateTimeFormat("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+   }).format(new Date(firstListened));
 }
 
 export default ArtistBorderedTable;
