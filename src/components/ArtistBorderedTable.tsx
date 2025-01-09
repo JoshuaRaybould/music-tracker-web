@@ -1,14 +1,13 @@
-import { Album, Song } from "../types";
+import { Artist } from "../types";
 import "../App.css";
 
 interface Props {
    firstCol: String;
    secondCol: String;
-   thirdCol: String;
-   items: Song[] | Album[];
+   items: Artist[];
 }
 
-function BorderedTable({ items, firstCol, secondCol, thirdCol }: Props) {
+function ArtistBorderedTable({ items, firstCol, secondCol }: Props) {
    /* handles click event
    const handleClick = (event: React.MouseEvent<HTMLElement>) =>
       console.log(event.clientX);*/
@@ -20,14 +19,12 @@ function BorderedTable({ items, firstCol, secondCol, thirdCol }: Props) {
                <tr>
                   <th scope="col">{firstCol}</th>
                   <th scope="col">{secondCol}</th>
-                  <th scope="col">{thirdCol}</th>
                </tr>
             </thead>
             <tbody>
                {items.map((item) => (
-                  <tr key={item.name + " " + item.artist}>
+                  <tr key={item.name + " " + item.timeListened}>
                      <td>{item.name}</td>
-                     <td>{item.artist}</td>
                      <td>{formatTimeListened(item.timeListened)}</td>
                   </tr>
                ))}
@@ -48,4 +45,4 @@ function formatTimeListened(timeListened: number): string {
    return hours + " hours and " + minutes + " minutes";
 }
 
-export default BorderedTable;
+export default ArtistBorderedTable;
