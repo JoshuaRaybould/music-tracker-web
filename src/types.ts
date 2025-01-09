@@ -5,7 +5,7 @@ type Song = {
    album: string,
    timeListened: number,
    plays: number,
-   uniqueVal: number, // streak, max amount of times it was listened to in a row
+   streak: number, // streak, max amount of times it was listened to in a row
    firstListened: EpochTimeStamp
 }
 
@@ -16,7 +16,7 @@ type Album = {
    artist: string,
    timeListened: number,
    plays: number,
-   uniqueVal: number, // idk what this will be if anything, just place holder here
+   streak: number, // idk what this will be if anything, just place holder here
    firstListened: EpochTimeStamp
 }
 
