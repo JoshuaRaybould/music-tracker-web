@@ -61,9 +61,9 @@ function ArtistBorderedTable({ items }: Props) {
 }
 
 function formatTimeListened(timeListened: number): string {
-   let seconds: number = Math.floor(timeListened % 60);
-   let minutes: number = Math.floor((timeListened / 60) % 60);
-   let hours: number = Math.floor(timeListened / 3600);
+   const seconds: number = Math.floor(timeListened % 60);
+   const minutes: number = Math.floor((timeListened / 60) % 60);
+   const hours: number = Math.floor(timeListened / 3600);
 
    if (hours === 0) {
       return minutes + " minutes and " + seconds + " seconds";
@@ -71,7 +71,7 @@ function formatTimeListened(timeListened: number): string {
    return hours + " hours and " + minutes + " minutes";
 }
 
-function formatTimeStamp(firstListened: EpochTimeStamp): string {
+function formatTimeStamp(firstListened: string): string {
    return new Intl.DateTimeFormat("en-GB", {
       year: "numeric",
       month: "2-digit",

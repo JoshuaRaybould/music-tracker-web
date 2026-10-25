@@ -6,7 +6,7 @@ type Song = {
    timeListened: number,
    plays: number,
    streak: number, // streak, max amount of times it was listened to in a row
-   firstListened: EpochTimeStamp
+   firstListened: string // ISO timestamp from Spotify's "ts" field
 }
 
 export type { Song }
@@ -17,7 +17,7 @@ type Album = {
    timeListened: number,
    plays: number,
    streak: number, // idk what this will be if anything, just place holder here
-   firstListened: EpochTimeStamp
+   firstListened: string // ISO timestamp from Spotify's "ts" field
 }
 
 export type { Album }
@@ -27,7 +27,7 @@ type Artist = {
    timeListened: number,
    plays: number,
    streak: number,
-   firstListened: EpochTimeStamp
+   firstListened: string // ISO timestamp from Spotify's "ts" field
 }
 
 export type { Artist }

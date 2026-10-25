@@ -7,7 +7,7 @@ interface Props {
 
 function FileInput({ addSongs }: Props) {
    const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
-      let files: FileList | null = e.currentTarget.files;
+      const files: FileList | null = e.currentTarget.files;
       if (files) {
          // Check if files is not null
          Array.from(files).forEach(async (file) => {
@@ -17,8 +17,12 @@ function FileInput({ addSongs }: Props) {
                      "Expected a json file but got a " + file.type + " file"
                   );
                } else {
-                  const curSongs = await ProcessContents(file);
-                  addSongs(curSongs);
+                  try {
+                     const curSongs = await ProcessContents(file);
+                     addSongs(curSongs);
+                  } catch (error) {
+                     console.error("Could not read " + file.name + ": " + error);
+                  }
                }
             } else {
                console.error("File could not be uploaded. Please try again.");

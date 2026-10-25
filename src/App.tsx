@@ -8,14 +8,16 @@ import songsToArtists from "./artistLogic";
 import CleanSongs from "./SongLogic";
 
 function App() {
-   const [songs, setSongs] = useState<Song[]>([]);
+   // Raw plays from every uploaded file, cleaned together so streaks are worked out in listening order
+   const [plays, setPlays] = useState<Song[]>([]);
 
    function addSongs(curSongs: Song[]) {
-      setSongs((currentSongs) => {
-         return CleanSongs([...currentSongs, ...curSongs]);
-      });
+      setPlays((currentPlays) => [...currentPlays, ...curSongs]);
    }
 
+   const songs = CleanSongs(
+      [...plays].sort((a, b) => a.firstListened.localeCompare(b.firstListened))
+   );
    const albums = songsToAlbums(songs);
    const artists = songsToArtists(songs);
 
